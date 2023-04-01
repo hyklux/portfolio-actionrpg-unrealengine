@@ -2,26 +2,37 @@
 언리얼 엔진 Action RPG 포트폴리오
 
 
-# 소개
+## 소개
 언리얼 엔진으로 제작한 3인칭 액션 RPG 포트폴리오입니다.
+3인칭 플레이어 캐릭터의 기본 전투 로직을 구현해 보았습니다.
 
 
-# BaseWeapon
+## 구성
+:heavy_check_mark: 무기
 
 
-# CombatCharacter
+:heavy_check_mark: 캐릭터
 
 
-# Components
+:heavy_check_mark: 컴포넌트
 
 
-## TargetingComponent
+## BaseWeapon
 
 
-## CombatComponent
+## CombatCharacter
 
 
-## StatsComponent
+## Components
 
 
-## StateManageComponent
+### TargetingComponent
+
+
+### CombatComponent
+
+
+### StatsComponent
+
+
+### StateManageComponent
