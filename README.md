@@ -103,10 +103,13 @@ public:
 ## Components
 - 캐릭터나 무기의 세부 기능은 개별 Component에 의해서 구현됩니다.
 - CombatCharacter는 TargetingComponent, CombatComponent, StatsCompnent, StateManageComponent를 가지고 있습니다.
+
+
+![arpg7](https://user-images.githubusercontent.com/96270683/229289945-b18177f6-bca6-4330-abac-d1adbe02e8a7.PNG)
 - BaseWeapon은 CollisionComponent를 가지고 있습니다.
 
 
-
+![arpg8](https://user-images.githubusercontent.com/96270683/229289955-ef543a0c-e869-4256-a936-82ac905c7f6e.PNG)
 
 
 
