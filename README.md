@@ -92,7 +92,7 @@ public:
 - 아래 영상은 무기 장착 후 적용된 캐릭터 전투 모션입니다.
 
 
-![MeleeCombatSystem_CombatMotion](https://user-images.githubusercontent.com/96270683/229286240-effbde13-67a1-47e0-82f9-347eaa245c31.gif){: width="200%" height="200%"}
+![MeleeCombatSystem_CombatMotion](https://user-images.githubusercontent.com/96270683/229286240-effbde13-67a1-47e0-82f9-347eaa245c31.gif width="250" height="250")
 
 
 ## Components
