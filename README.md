@@ -89,7 +89,8 @@ public:
 ![arpg6](https://user-images.githubusercontent.com/96270683/229285673-18cd72fc-40f0-4fd0-bb80-af2790987e77.PNG)
 - 무기 액터는 SkeletonMesh의 지정 소켓에 장착됩니다.
 - 무기 장착 시 CombatCharacter 클래스는 Weapon 클래스의 owner가 되어 전투에 필요한 정보를 불러오게 됩니다.
-- (전투 GIF) 
+- 아래 영상은 무기 장착 후 적용된 캐릭터 전투 모셥입니다.
+![MeleeCombatSystem_-_언리얼_에디터_2023-04-01_20-20-14_AdobeExpress](https://user-images.githubusercontent.com/96270683/229285904-d9e3f224-b489-4c1a-a6f8-5722bf37152c.gif)
 
 ## Components
 
