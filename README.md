@@ -95,13 +95,17 @@ public:
 ![arpg1_min](https://user-images.githubusercontent.com/96270683/229287431-f8f93287-0787-4d95-9975-3cbcb6a4b0e3.gif)
 
 
+![arpg2_min](https://user-images.githubusercontent.com/96270683/229287735-5707c1a1-cecc-4d7f-ab5d-b1fe8dfdfa3d.gif)
 
 
 
 
 ## Components
+- 캐릭터의 세부 기능은 개별 Component에 의해서 구현합니다.
+- CombatCharacter는 TargetingComponent, CombatComponent, StatsCompnent, StateManageComponent를 가지고 있습니다.
 
 
+![arpg7](https://user-images.githubusercontent.com/96270683/229287793-7c9c63f0-2b4e-48c8-a7ae-5f9b35dc66d6.PNG)
 ### TargetingComponent
 
 
