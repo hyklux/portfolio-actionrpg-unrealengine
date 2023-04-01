@@ -92,7 +92,6 @@ public:
 - 아래 영상은 무기 장착 후 적용된 캐릭터 전투 모셥입니다.
 
 
-![MeleeCombatSystem_-_언리얼_에디터_2023-04-01_20-20-14_AdobeExpress](https://user-images.githubusercontent.com/96270683/229285904-d9e3f224-b489-4c1a-a6f8-5722bf37152c.gif)
 
 ## Components
 
