@@ -33,34 +33,54 @@
 - BaseWeapon은 무기의 공격 유형에 따른 애니메이션 데이터와 전투 시 적용될 공격 데이터가 정의됩니다.
 ``` c++
 public:
+	UPROPERTY()
 	FName HandSocketName;
+	UPROPERTY()
 	ECombatType CombatType;
+	UPROPERTY()
 	UCombatComponent* CombatComponent;
 
 	//공격 유형에 따른 애니메이션 몽타주
+	UPROPERTY()
 	TArray<UAnimMontage*> LightAttackMontages;
+	UPROPERTY()
 	TArray<UAnimMontage*> HeavyAttackMontages;
+	UPROPERTY()
 	TArray<UAnimMontage*> ChargeAttackMontages;
+	UPROPERTY()
 	TArray<UAnimMontage*> FallingAttackMontages;
+	UPROPERTY()
 	TArray<UAnimMontage*> SprintAttackMontages;
+	UPROPERTY()
 	TArray<UAnimMontage*> DodgeMontages;
+	UPROPERTY()
 	UAnimMontage* EnterCombatMontage;
+	UPROPERTY()
 	UAnimMontage* ExitCombatMontage;
 
 	//전투 관련 데이터
+	UPROPERTY()
 	float Damage;
+	UPROPERTY()
 	TMap<FGameplayTag, float> ActionStatCost;
+	UPROPERTY()
 	TMap<FGameplayTag, float> ActionDamageMultiplier;
 ```
 
 
 ### BP_ToughSword
 - 실제 무기 클래스인 BP_ToughSword의 모습입니다.
-- (BP_ToughSword의) 스샷
+
+
+![arpg3](https://user-images.githubusercontent.com/96270683/229283520-82812ffa-82f7-475b-a2fc-6da94f31b70d.PNG)
 - LightAttack, HeavyAttack 등 공격 유형에 따른 애니메이션을 지정합니다.
-- (BP_ToughSword의) 애니메이션 스샷
+
+
+![arpg4](https://user-images.githubusercontent.com/96270683/229283564-6cfd2535-ee5a-4e45-801f-43823f85aae4.PNG)
 - Damage 공격 데이터를 설정합니다.
-- (BP_ToughSword의) 애니메이션 스샷
+
+
+![arpg5](https://user-images.githubusercontent.com/96270683/229283590-fae7b03a-241f-4813-9f4e-0b8dacaf30d5.PNG)
 
 ## Character
 
