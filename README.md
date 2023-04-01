@@ -103,23 +103,35 @@ public:
 ## Components
 - 캐릭터나 무기의 세부 기능은 개별 Component에 의해서 구현됩니다.
 - CombatCharacter는 TargetingComponent, CombatComponent, StatsCompnent, StateManageComponent를 가지고 있습니다.
-
-
-![arpg7](https://user-images.githubusercontent.com/96270683/229289945-b18177f6-bca6-4330-abac-d1adbe02e8a7.PNG)
 - BaseWeapon은 CollisionComponent를 가지고 있습니다.
 
 
+![arpg7](https://user-images.githubusercontent.com/96270683/229289945-b18177f6-bca6-4330-abac-d1adbe02e8a7.PNG)
 ![arpg8](https://user-images.githubusercontent.com/96270683/229289955-ef543a0c-e869-4256-a936-82ac905c7f6e.PNG)
 
 
 
 ### TargetingComponent
-
+- 타겟팅 명령을 입력하며 지정한 TargetingDistance 안에 적이 있는지 판별합니다.
+- 적이 있으면 LockOn이 되고 적에게 LockOn UI가 표시됩니다.
+- LockOn 중일 때는 플레이어와 카메라는 LockOn된 적을 계속 바라보도록 처리합니다.
+(gif)
 
 ### CombatComponent
-
-
-### StatsComponent
+- 장착한 Weapon 객체를 참조하는 컴포넌트로, 무기를 장착 및 탈착 시에 실행되어야 하는 기능도 담당합니다. 
 
 
 ### StateManageComponent
+- 캐릭터가 어떤 상태(State)인지, 어떤 액션(Action)을 하고 있는지에 대한 정보를 갖고 있습니다.
+- 다른 컴포넌트에서 전담 기능을 수행할 때 이 State와 Action값을 참조하게 됩니다.
+
+
+### StatsComponent
+- 캐릭터의 스탯(HP, 스태미나) 정보를 관리합니다.
+- 스탵 정보는 화면 왼쪽 상단 UI에 그 값이 계속적으로 업데이트되도록 합니다.
+(스샷)
+
+### CollisionComponent
+- 충돌을 감지하여 피격 및 타격에 대한 처리를 담당하는 컴포넌트입니다.
+- 공격 시 무기의 Collision을 가동하여 충돌에 의해 감지된 액터들에 대한 정보를 수집해 Damage 처리를 수행합니다.
+(스샷)
