@@ -25,6 +25,21 @@
 ## Weapon
 
 
+### BaseWeapon
+- 모든 무기 클래스는 BaseWeapon 클래스를 상속하여 구현합니다.
+- (BaseWeapon 상속 구조 스샷)
+- BaseWeapon은 무기의 공격 유형에 따른 애니메이션 데이터와 전투 시 적용될 공격 데이터가 정의됩니다.
+- (BaseWeapon 스크립트 스샷)
+
+
+### BP_ToughSword
+- 실제 무기 클래스인 BP_ToughSword의 모습입니다.
+- (BP_ToughSword의) 스샷
+- LightAttack, HeavyAttack 등 공격 유형에 따른 애니메이션을 지정합니다.
+- (BP_ToughSword의) 애니메이션 스샷
+- Damage 공격 데이터를 설정합니다.
+- (BP_ToughSword의) 애니메이션 스샷
+
 ## Character
 
 
