@@ -77,7 +77,7 @@ public:
 
 
 ![arpg4](https://user-images.githubusercontent.com/96270683/229283564-6cfd2535-ee5a-4e45-801f-43823f85aae4.PNG)
-- Damage 공격 데이터를 설정합니다.
+- Damage, ActionStatCost 등의 공격 데이터를 설정합니다.
 
 
 ![arpg5](https://user-images.githubusercontent.com/96270683/229283590-fae7b03a-241f-4813-9f4e-0b8dacaf30d5.PNG)
