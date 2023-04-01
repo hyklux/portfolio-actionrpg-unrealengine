@@ -8,19 +8,19 @@
 
 
 ## 구성
-:heavy_check_mark: 무기
+:heavy_check_mark: Weapon
 
 
-:heavy_check_mark: 캐릭터
+:heavy_check_mark: Character
 
 
-:heavy_check_mark: 컴포넌트
+:heavy_check_mark: Components
 
 
-## BaseWeapon
+## Weapon
 
 
-## CombatCharacter
+## Character
 
 
 ## Components
