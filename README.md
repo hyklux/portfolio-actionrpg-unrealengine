@@ -27,9 +27,29 @@
 
 ### BaseWeapon
 - 모든 무기 클래스는 BaseWeapon 클래스를 상속하여 구현합니다.
-- (BaseWeapon 상속 구조 스샷)
+![arpg2](https://user-images.githubusercontent.com/96270683/229281375-aa3928d1-fb09-434c-b130-f3eb6213df37.PNG)
 - BaseWeapon은 무기의 공격 유형에 따른 애니메이션 데이터와 전투 시 적용될 공격 데이터가 정의됩니다.
-- (BaseWeapon 스크립트 스샷)
+```
+public:
+	FName HandSocketName;
+	ECombatType CombatType;
+	UCombatComponent* CombatComponent;
+
+	//공격 유형에 따른 애니메이션 몽타주
+	TArray<UAnimMontage*> LightAttackMontages;
+	TArray<UAnimMontage*> HeavyAttackMontages;
+	TArray<UAnimMontage*> ChargeAttackMontages;
+	TArray<UAnimMontage*> FallingAttackMontages;
+	TArray<UAnimMontage*> SprintAttackMontages;
+	TArray<UAnimMontage*> DodgeMontages;
+	UAnimMontage* EnterCombatMontage;
+	UAnimMontage* ExitCombatMontage;
+
+	//전투 관련 데이터
+	float Damage;
+	TMap<FGameplayTag, float> ActionStatCost;
+	TMap<FGameplayTag, float> ActionDamageMultiplier;
+```
 
 
 ### BP_ToughSword
