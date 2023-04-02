@@ -114,9 +114,13 @@ public:
 ### TargetingComponent
 - 타겟팅 명령을 입력하며 지정한 TargetingDistance 안에 적이 있는지 판별합니다.
 - 적이 있으면 LockOn이 되고 적에게 LockOn UI가 표시됩니다.
-- LockOn 중일 때는 플레이어와 카메라는 LockOn된 적을 계속 바라보도록 처리합니다.
-(gif)
 
+
+![arpg9](https://user-images.githubusercontent.com/96270683/229327024-e8d47812-08f8-457a-b8f0-9ed42eb54961.PNG)
+- LockOn 중일 때는 플레이어와 카메라는 LockOn된 적을 계속 바라보도록 처리합니다.
+
+
+![arpg3_min](https://user-images.githubusercontent.com/96270683/229327013-a5b54d28-1c8e-411e-81ae-71a08eac819d.gif)
 ### CombatComponent
 - 장착한 Weapon 객체를 참조하는 컴포넌트로, 무기를 장착 및 탈착 시에 실행되어야 하는 기능도 담당합니다. 
 
