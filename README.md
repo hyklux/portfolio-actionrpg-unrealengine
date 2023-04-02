@@ -127,13 +127,16 @@ public:
 
 ### StateManageComponent
 - 캐릭터가 어떤 상태(State)인지, 어떤 액션(Action)을 하고 있는지에 대한 정보를 갖고 있습니다.
+- State와 Action은 언리얼 엔진에서 제공하는 GameplayTag를 활용합니다. 
 - 다른 컴포넌트에서 전담 기능을 수행할 때 이 State와 Action값을 참조하게 됩니다.
 
 
+![arpg10](https://user-images.githubusercontent.com/96270683/229327248-65516091-8150-4491-bb70-18d280fe6877.PNG)
 ### StatsComponent
 - 캐릭터의 스탯(HP, 스태미나) 정보를 관리합니다.
 - 스탵 정보는 화면 왼쪽 상단 UI에 그 값이 계속적으로 업데이트되도록 합니다.
-(스샷)
+![arpg11](https://user-images.githubusercontent.com/96270683/229327315-0a86f2db-6346-46fd-bd4a-e2af03b41b56.PNG)
+
 
 ### CollisionComponent
 - 충돌을 감지하여 피격 및 타격에 대한 처리를 담당하는 컴포넌트입니다.
