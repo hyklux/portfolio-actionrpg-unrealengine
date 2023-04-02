@@ -113,10 +113,10 @@ public:
 
 ### TargetingComponent
 - 타겟팅 명령을 입력하며 지정한 TargetingDistance 안에 적이 있는지 판별합니다.
-- 적이 있으면 LockOn이 되고 적에게 LockOn UI가 표시됩니다.
 
 
 ![arpg9](https://user-images.githubusercontent.com/96270683/229327024-e8d47812-08f8-457a-b8f0-9ed42eb54961.PNG)
+- 적이 있으면 LockOn이 되고 적에게 LockOn UI가 표시됩니다.
 - LockOn 중일 때는 플레이어와 카메라는 LockOn된 적을 계속 바라보도록 처리합니다.
 
 
