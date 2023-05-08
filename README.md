@@ -134,7 +134,7 @@ public:
 ![arpg10](https://user-images.githubusercontent.com/96270683/229327248-65516091-8150-4491-bb70-18d280fe6877.PNG)
 ### StatsComponent
 - 캐릭터의 스탯(HP, 스태미나) 정보를 관리합니다.
-- 스 정보는 화면 왼쪽 상단 UI에 그 값이 계속적으로 업데이트되도록 합니다.
+- 스탯 정보는 화면 왼쪽 상단 UI에 그 값이 계속적으로 업데이트되도록 합니다.
 
 
 ![arpg11](https://user-images.githubusercontent.com/96270683/229327315-0a86f2db-6346-46fd-bd4a-e2af03b41b56.PNG)
