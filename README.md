@@ -1,9 +1,9 @@
 # portfolio-actionrpg-unrealengine
-Action RPG portfolio using Unreal Engine
+Action RPG portfolio made by Unreal Engine
 
 
 ## Introduction
-This is a action RPG portfolio using Unreal Engine
+This is a action RPG portfolio made by Unreal Engine.
 
 
 I have implemented the basic combat logic for a 3rd person player character.
