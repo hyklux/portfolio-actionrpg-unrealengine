@@ -26,7 +26,7 @@ I have implemented the basic combat logic for a 3rd person player character.
 
 
 ### BaseWeapon
-- - All weapon classes are implemented by inheriting the BaseWeapon class.
+- All weapon classes are implemented by inheriting the BaseWeapon class.
 
 
 ![arpg2](https://user-images.githubusercontent.com/96270683/229282134-d7296db9-df8c-488e-be62-71448fbb9a6c.PNG)
