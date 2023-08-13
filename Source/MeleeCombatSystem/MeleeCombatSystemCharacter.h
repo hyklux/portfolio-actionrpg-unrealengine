@@ -59,17 +59,17 @@ private:
 	EMovementSpeedMode MovementSpeedMode = EMovementSpeedMode::Jogging;
 
 public:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	UTargetingComponent* TargetingComponent;
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	//UTargetingComponent* TargetingComponent;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	UStatsComponent* StatsComponent;
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	//UStatsComponent* StatsComponent;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	UStateManageComponent* StateManageComponent;
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	//UStateManageComponent* StateManageComponent;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	UCombatComponent* CombatComponent;
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	//UCombatComponent* CombatComponent;
 
 	float WalkingSpeed = 200.0f;
 	float JoggingSpeed = 500.0f;

@@ -4,15 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "TypeDefine.h"
 #include "CombatComponent.generated.h"
 
-UENUM()
-enum class EMovementSpeedMode : uint8
-{
-	Walking,
-	Jogging,
-	Sprinting,
-};
+DECLARE_MULTICAST_DELEGATE_OneParam(FDelegate_OnCombatToggled, bool);
+DECLARE_MULTICAST_DELEGATE_OneParam(FDelegate_OnBlockingSet, bool);
+DECLARE_MULTICAST_DELEGATE_OneParam(FDelegate_OnShieldEquippedSet, bool);
 
 class ABaseWeapon;
 
@@ -30,22 +27,27 @@ private:
 	ABaseWeapon* MainWeapon;
 	
 	UPROPERTY()
-	bool CombatEnabled = false;
-	
-public:
+	bool bCombatEnabled = false;
 	UPROPERTY()
 	int AttackCount = 0;
 	UPROPERTY()
-	bool IsAttackSaved = false;
+	bool bAttackSaved = false;
 	UPROPERTY()
-	bool IsAttacking = false;
+	bool bAttacking = false;
+	UPROPERTY()
+		bool bBlocking = false;
+	UPROPERTY()
+		bool bShieldEquipped = false;
+public:
+
+	FDelegate_OnCombatToggled OnCombatToggledDelegate;
+	FDelegate_OnBlockingSet OnBlockingSetDelegate;
+	FDelegate_OnShieldEquippedSet OnShieldEquippedSetDelegate;
 
 protected:
-	// Called when the game starts
 	virtual void BeginPlay() override;
 
 public:	
-	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	
 	UFUNCTION(BlueprintCallable)
@@ -58,9 +60,23 @@ public:
 	void SetCombatEnabled(bool enableCombat);
 	
 	UFUNCTION(BlueprintCallable)
-	bool IsCombatEnabled() const;
+		bool IsCombatEnabled() const { return bCombatEnabled; }
 	
 	UFUNCTION(BlueprintCallable)
 	void ResetAttack();
-		
+
+	UFUNCTION(BlueprintCallable)
+		void SetBlockingState(bool inbEnableBlocking);
+
+	UFUNCTION(BlueprintCallable)
+		void SetShieldWeapon(ABaseWeapon* inShield);
+
+	UFUNCTION(BlueprintCallable)
+		bool IsBlocking() const { return bBlocking; }
+
+	UFUNCTION(BlueprintCallable)
+		bool IsShieldEquipped() const { return bShieldEquipped; }
+
+	UFUNCTION(BlueprintCallable)
+		void SetShieldEquipped(bool inbEquipped);
 };

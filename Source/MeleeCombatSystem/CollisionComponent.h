@@ -5,15 +5,11 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "TypeDefine.h"
+#include "GameplayTagContainer.h"
 #include "CollisionComponent.generated.h"
 
-UENUM()
-enum class ECollisionPart : uint8
-{
-	MainWeapon,
-	OffHandWeapon,
-	RightFoot,
-};
+DECLARE_DELEGATE_OneParam(FDelegate_OnHit, FHitResult);
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class MELEECOMBATSYSTEM_API UCollisionComponent : public UActorComponent
@@ -59,17 +55,20 @@ public:
 	UPROPERTY()
 	AActor* HitActor;
 
+	UPROPERTY()
+		FGameplayTagContainer GameplayTagsToIgnore;
+
+	UPROPERTY()
+	TArray<TSubclassOf<AActor>> ActorClassToIgnore;
+
+		FDelegate_OnHit OnHitDelegate;
+
 protected:
-	// Called when the game starts
 	virtual void BeginPlay() override;
 
 public:	
-	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	
-	UFUNCTION(BlueprintCallable)
-	UPrimitiveComponent* GetCollisionMeshComponent() const;
-
 	UFUNCTION(BlueprintCallable)
 	TArray<AActor*> GetAlreadyHitActors() const;
 	
@@ -78,6 +77,9 @@ public:
 	
 	UFUNCTION(BlueprintCallable)
 	FHitResult GetLastHit() const;
+
+	UFUNCTION(BlueprintCallable)
+	UPrimitiveComponent* GetCollisionMeshComponent() const;
 	
 	UFUNCTION(BlueprintCallable)
 	void AddActorToIgnore(AActor* inActor);
@@ -102,4 +104,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void DeactivateCollision();
-};
+
+	UFUNCTION()
+		bool CanHitActor(AActor* inActor);
+}; 

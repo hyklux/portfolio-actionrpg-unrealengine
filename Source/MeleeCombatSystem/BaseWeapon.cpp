@@ -5,15 +5,44 @@
 #include "GameplayTagContainer.h"
 #include "CombatComponent.h"
 #include "StateManageComponent.h"
+#include "StatsComponent.h"
+#include "CombatInterface.h"
+#include "AnimInstanceInterface.h"
+#include "Kismet/GameplayStatics.h"
+#include "GameFramework/Character.h"
+
+ABaseWeapon::ABaseWeapon()
+{
+	MainWeaponCollisionComponent = CreateDefaultSubobject<UCollisionComponent>(TEXT("MainWeaponCollisionComponent"));
+	MainWeaponCollisionComponent->OnHitDelegate.BindUObject(this, &ABaseWeapon::OnHit);
+}
 
 void ABaseWeapon::OnEquipped()
 {
-	CombatComponent = Cast<UCombatComponent>(GetOwner()->GetComponentByClass(UCombatComponent::StaticClass()));
-	OwnerStateManager = Cast<UStateManageComponent>(GetOwner()->GetComponentByClass(UStateManageComponent::StaticClass()));
-	AttachActor(CombatComponent->IsCombatEnabled() ? HandSocketName : AttachSocketName);
-	CombatComponent->SetMainWeapon(this);
-	MainWeaponCollisionComponent->SetCollisionMesh(GetItemMesh());
-	MainWeaponCollisionComponent->AddActorToIgnore(GetOwner());
+	Super::OnEquipped();
+
+	AActor* owner = GetOwner();
+
+	CombatComponent = Cast<UCombatComponent>(owner->GetComponentByClass(UCombatComponent::StaticClass()));
+	if (CombatComponent)
+	{
+		CombatComponent->OnCombatToggledDelegate.AddUObject(this, &ABaseWeapon::ToggleWeaponCombat);
+		OwnerStateManager = Cast<UStateManageComponent>(owner->GetComponentByClass(UStateManageComponent::StaticClass()));
+		OwnerStatsComponent = Cast<UStatsComponent>(owner->GetComponentByClass(UStatsComponent::StaticClass()));
+		
+		AttachActor(CombatComponent->IsCombatEnabled() ? HandSocketName : AttachSocketName);
+		CombatComponent->SetMainWeapon(this);
+		
+		ACharacter* character = Cast<ACharacter>(owner);
+		IAnimInstanceInterface* animInterface = Cast<IAnimInstanceInterface>(character->GetMesh()->GetAnimInstance());
+		if (animInterface)
+		{
+			animInterface->UpdateCombatType(CombatType);
+		}
+
+		MainWeaponCollisionComponent->SetCollisionMesh(GetItemMesh());
+		MainWeaponCollisionComponent->AddActorToIgnore(owner);
+	}	
 }
 
 TArray<UAnimMontage*> ABaseWeapon::GetActionMontages(FGameplayTag characterAction)
@@ -55,6 +84,10 @@ TArray<UAnimMontage*> ABaseWeapon::GetActionMontages(FGameplayTag characterActio
 		TArray<UAnimMontage*> montages;
 		montages.Push(ExitCombatMontage);
 		return montages;
+	}
+	else if (tagName == TEXT("Character.Action.Attack.Block Attack"))
+	{
+		return BlockAttackMontages;
 	}
 
 	return TArray<UAnimMontage*>();
@@ -114,4 +147,33 @@ void ABaseWeapon::ToggleCombat(bool enableCombat)
 {
 	CombatComponent->SetCombatEnabled(enableCombat);
 	AttachActor(enableCombat ? HandSocketName : AttachSocketName);
+}
+
+void ABaseWeapon::OnHit(FHitResult inHitResult)
+{
+	AActor* damagedActor = inHitResult.GetActor();
+	if (IsValid(damagedActor))
+	{
+		ICombatInterface* combatInterface = Cast<ICombatInterface>(damagedActor);
+
+		if (combatInterface)
+		{
+			UGameplayStatics::ApplyPointDamage(damagedActor, GetDamage(), GetOwner()->GetActorForwardVector(), inHitResult, GetInstigatorController(), this, NULL);
+		}
+	}
+}
+
+void ABaseWeapon::SimulateWeaponPhysics()
+{
+	UPrimitiveComponent* itemMesh = GetItemMesh();
+	if (IsValid(itemMesh))
+	{
+		itemMesh->SetCollisionProfileName(TEXT("PhysicsActor"));
+		itemMesh->SetSimulatePhysics(false);
+	}
+}
+
+void ABaseWeapon::ToggleWeaponCombat(bool inbEnableCombat)
+{
+	AttachActor(inbEnableCombat ? HandSocketName : AttachSocketName);
 }

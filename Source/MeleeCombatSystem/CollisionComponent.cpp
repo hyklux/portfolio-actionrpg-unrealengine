@@ -2,29 +2,19 @@
 
 
 #include "CollisionComponent.h"
+#include "GameplayTagInterface.h"
+#include "Kismet/GameplayStatics.h"
 
-// Sets default values for this component's properties
 UCollisionComponent::UCollisionComponent()
 {
-	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
-
-	// ...
 }
 
-
-// Called when the game starts
 void UCollisionComponent::BeginPlay()
 {
 	Super::BeginPlay();
-
-	// ...
-	
 }
 
-
-// Called every frame
 void UCollisionComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
@@ -81,10 +71,19 @@ void UCollisionComponent::CollisionTrace()
 	{
 		for (FHitResult hit : outHits)
 		{
-			if (!AlreadyHitActors.Contains(hit.GetActor()))
+			LastHit = hit;
+			AActor* hitActor = LastHit.GetHitObjectHandle().FetchActor();
+			if (IsValid(hitActor) && CanHitActor(hitActor))
 			{
-				AlreadyHitActors.Push(hit.GetActor());
+				HitActor = hitActor;
 			}
+
+			if (!AlreadyHitActors.Contains(HitActor))
+			{
+				AlreadyHitActors.Push(HitActor);
+			}
+
+			OnHitDelegate.ExecuteIfBound(hit);
 		}
 	}
 }
@@ -110,3 +109,19 @@ void UCollisionComponent::DeactivateCollision()
 	IsCollisionEnabled = false;
 }
 
+bool UCollisionComponent::CanHitActor(AActor* inActor)
+{
+	IGameplayTagInterface* gameplayTagInterface = Cast<IGameplayTagInterface>(inActor);
+	if (!gameplayTagInterface)
+	{
+		return false;
+	}
+
+	FGameplayTagContainer tagContainer = gameplayTagInterface->GetOwnedGameplayTags();
+
+	bool isGameplaTagToIgnore = tagContainer.HasAnyExact(GameplayTagsToIgnore);
+	bool isAlreadyHitActor = AlreadyHitActors.Contains(inActor);
+	bool isActorClassToIgnore = ActorClassToIgnore.Contains(inActor->GetClass());
+
+	return !isGameplaTagToIgnore && !isAlreadyHitActor && !isActorClassToIgnore;
+}

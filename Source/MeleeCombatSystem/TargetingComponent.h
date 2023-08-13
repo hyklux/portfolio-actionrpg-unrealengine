@@ -4,14 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "TypeDefine.h"
 #include "TargetingComponent.generated.h"
-
-UENUM()
-enum class ERotationMode : uint8
-{
-	OrientToCamera,
-	OrientToMovement,
-};
 
 class UCombatComponent;
 class UCameraComponent;

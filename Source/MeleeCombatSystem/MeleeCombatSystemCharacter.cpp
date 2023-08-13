@@ -57,10 +57,10 @@ AMeleeCombatSystemCharacter::AMeleeCombatSystemCharacter()
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 
-	TargetingComponent = CreateDefaultSubobject<UTargetingComponent>(TEXT("TargetingComponent"));
-	StatsComponent = CreateDefaultSubobject<UStatsComponent>(TEXT("StatsComponent"));
-	StateManageComponent = CreateDefaultSubobject<UStateManageComponent>(TEXT("StateManageComponent"));
-	CombatComponent = CreateDefaultSubobject<UCombatComponent>(TEXT("CombatComponent"));
+	//TargetingComponent = CreateDefaultSubobject<UTargetingComponent>(TEXT("TargetingComponent"));
+	//StatsComponent = CreateDefaultSubobject<UStatsComponent>(TEXT("StatsComponent"));
+	//StateManageComponent = CreateDefaultSubobject<UStateManageComponent>(TEXT("StateManageComponent"));
+	//CombatComponent = CreateDefaultSubobject<UCombatComponent>(TEXT("CombatComponent"));
 }
 
 void AMeleeCombatSystemCharacter::BeginPlay()
@@ -138,25 +138,25 @@ void AMeleeCombatSystemCharacter::Look(const FInputActionValue& Value)
 
 void AMeleeCombatSystemCharacter::SetMovementSpeedMode(EMovementSpeedMode newSpeedMode)
 {
-	if (MovementSpeedMode != newSpeedMode)
-	{
-		MovementSpeedMode = newSpeedMode;
-		TargetingComponent->UpdateRotationMode();
-		switch (MovementSpeedMode)
-		{
-		case EMovementSpeedMode::Walking:
-			GetCharacterMovement()->MaxWalkSpeed = WalkingSpeed;
-			break;
-		case EMovementSpeedMode::Jogging:
-			GetCharacterMovement()->MaxWalkSpeed = JoggingSpeed;
-			break;
-		case EMovementSpeedMode::Sprinting:
-			GetCharacterMovement()->MaxWalkSpeed = SprintingSpeed;
-			break;
-		default:
-			break;
-		}
-	}
+	//if (MovementSpeedMode != newSpeedMode)
+	//{
+	//	MovementSpeedMode = newSpeedMode;
+	//	TargetingComponent->UpdateRotationMode();
+	//	switch (MovementSpeedMode)
+	//	{
+	//	case EMovementSpeedMode::Walking:
+	//		GetCharacterMovement()->MaxWalkSpeed = WalkingSpeed;
+	//		break;
+	//	case EMovementSpeedMode::Jogging:
+	//		GetCharacterMovement()->MaxWalkSpeed = JoggingSpeed;
+	//		break;
+	//	case EMovementSpeedMode::Sprinting:
+	//		GetCharacterMovement()->MaxWalkSpeed = SprintingSpeed;
+	//		break;
+	//	default:
+	//		break;
+	//	}
+	//}
 }
 
 EMovementSpeedMode AMeleeCombatSystemCharacter::GetCurrentSpeedMode() const
@@ -166,28 +166,28 @@ EMovementSpeedMode AMeleeCombatSystemCharacter::GetCurrentSpeedMode() const
 
 void AMeleeCombatSystemCharacter::PerformAttack(FGameplayTag gameplayTag, int AttackIndex, bool isRandomIndex)
 {
-	if (CombatComponent->IsCombatEnabled())
-	{
-		TArray<UAnimMontage*> attackMontages = CombatComponent->GetMainWeapon()->GetActionMontages(gameplayTag);
-		UAnimMontage* attackMontage = attackMontages[AttackIndex];
-		if (IsValid(attackMontage))
-		{
-			PlayAnimMontage(attackMontages[AttackIndex]);
-			StateManageComponent->SetAction(gameplayTag);
-			StateManageComponent->SetState(FGameplayTag::RequestGameplayTag(TEXT("Character.State.Attacking"), true));
-		}
-	}
+	//if (CombatComponent->IsCombatEnabled())
+	//{
+	//	TArray<UAnimMontage*> attackMontages = CombatComponent->GetMainWeapon()->GetActionMontages(gameplayTag);
+	//	UAnimMontage* attackMontage = attackMontages[AttackIndex];
+	//	if (IsValid(attackMontage))
+	//	{
+	//		PlayAnimMontage(attackMontages[AttackIndex]);
+	//		StateManageComponent->SetAction(gameplayTag);
+	//		StateManageComponent->SetState(FGameplayTag::RequestGameplayTag(TEXT("Character.State.Attacking"), true));
+	//	}
+	//}
 }
 
 void AMeleeCombatSystemCharacter::PerformDodge(int MontageIndex, bool isRandomIndex)
 {
-	UAnimMontage* animMontage = CombatComponent->GetMainWeapon()->DodgeMontages[MontageIndex];
-	if (IsValid(animMontage))
-	{
-		PlayAnimMontage(animMontage);
-		StateManageComponent->SetState(FGameplayTag::RequestGameplayTag(TEXT("Character.State.Dodge"), true));
-		StateManageComponent->SetAction(FGameplayTag::RequestGameplayTag(TEXT("Character.Action.Dodget"), true));
-	}
+	//UAnimMontage* animMontage = CombatComponent->GetMainWeapon()->DodgeMontages[MontageIndex];
+	//if (IsValid(animMontage))
+	//{
+	//	PlayAnimMontage(animMontage);
+	//	StateManageComponent->SetState(FGameplayTag::RequestGameplayTag(TEXT("Character.State.Dodge"), true));
+	//	StateManageComponent->SetAction(FGameplayTag::RequestGameplayTag(TEXT("Character.Action.Dodget"), true));
+	//}
 }
 
 bool AMeleeCombatSystemCharacter::ResetChargeAttack()
@@ -236,5 +236,5 @@ FGameplayTag AMeleeCombatSystemCharacter::GetDesiredAttackType()
 
 void AMeleeCombatSystemCharacter::SprintStaminaCost()
 {
-	StatsComponent->ModifyCurrentStatValue(EStats::Stamina, -2.0f, true);
+	//StatsComponent->ModifyCurrentStatValue(EStats::Stamina, -2.0f, true);
 }

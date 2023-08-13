@@ -4,16 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "TypeDefine.h"
 #include "StatsComponent.generated.h"
-
-UENUM()
-enum class EStats : uint8
-{
-	None,
-	Health,
-	Stamina,
-	Armor,
-};
 
 USTRUCT()
 struct FBaseStat
