@@ -138,7 +138,37 @@ public:
 ![arpg11](https://user-images.githubusercontent.com/96270683/229327315-0a86f2db-6346-46fd-bd4a-e2af03b41b56.PNG)
 ### CollisionComponent
 - CollisionComponent detects collisions and handles hits.
-- When attacking, the weapon's Collision is activated to collect information on the actors detected by the collision to process damage.
 
 
 ![arpg4_min](https://user-images.githubusercontent.com/96270683/229327623-ba78ca5d-3431-46ae-a530-d1e0644c7fb8.gif)
+- When attacking, the weapon's Collision is activated to collect information on the actors detected by the collision to process damage.
+- When the weapon's collision is activated, it creates a trace object from the weapon's top to bottom so it can detect any hits to the weapon.
+```
+void UCollisionComponent::CollisionTrace()
+{
+	FVector start = CollisionMeshComponent->GetSocketLocation(StartSocketName);
+	FVector end = CollisionMeshComponent->GetSocketLocation(EndSocketName);
+	TArray<FHitResult> outHits;
+
+	bool isHit = UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), start, end, TRaceRadius, CollisionObjectTypes, false, ActorsToIgnore, DrawDebugType, outHits, false);
+	if (isHit)
+	{
+		for (FHitResult hit : outHits)
+		{
+			LastHit = hit;
+			AActor* hitActor = LastHit.GetHitObjectHandle().FetchActor();
+			if (IsValid(hitActor) && CanHitActor(hitActor))
+			{
+				HitActor = hitActor;
+			}
+
+			if (!AlreadyHitActors.Contains(HitActor))
+			{
+				AlreadyHitActors.Push(HitActor);
+			}
+
+			OnHitDelegate.ExecuteIfBound(hit);
+		}
+	}
+}.
+```  
