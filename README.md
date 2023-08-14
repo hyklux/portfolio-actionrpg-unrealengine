@@ -143,7 +143,7 @@ public:
 ![arpg4_min](https://user-images.githubusercontent.com/96270683/229327623-ba78ca5d-3431-46ae-a530-d1e0644c7fb8.gif)
 - When attacking, the weapon's Collision is activated to collect information on the actors detected by the collision to process damage.
 - When the weapon's collision is activated, it creates a trace object from the weapon's top to bottom so it can detect any hits to the weapon.
-```
+``` c++
 void UCollisionComponent::CollisionTrace()
 {
 	FVector start = CollisionMeshComponent->GetSocketLocation(StartSocketName);
