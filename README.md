@@ -5,8 +5,6 @@ Action RPG portfolio using Unreal Engine
 Youtube Link : https://youtu.be/NV9-pcHnVTc
 
 
-[![Video Label](http://img.youtube.com/vi/NV9-pcHnVTc/0.jpg)](https://youtu.be/NV9-pcHnVTc)
-
 ## Introduction
 This is a action RPG portfolio made by Unreal Engine.
 
