@@ -26,7 +26,7 @@ I implemented the basic combat gameplay for a third person character.
 
 
 ## Character
-- BP_CombatPlayerCharacter is the blueprint class for playable character.
+- **BP_CombatPlayerCharacter** is the blueprint class for playable character.
 
 
 ![action_rpg_cha1](https://github.com/hyklux/portfolio-actionrpg-unrealengine/assets/96270683/34b37d30-24f1-4e79-a943-e354ddb192ba)
@@ -35,7 +35,7 @@ I implemented the basic combat gameplay for a third person character.
   
 ![action_rpg_cha2](https://github.com/hyklux/portfolio-actionrpg-unrealengine/assets/96270683/300c4c73-5d6b-43f5-b6ba-22fdd0054820)
 - Combat functions of the player character are implemented by individual components.
-- CombatPlayerCharacter has four components, TargetingComponent, CombatComponent, EquipmentComponent, StatsCompnent and StateManageComponent which will be explained in more detail below.
+- **BP_CombatPlayerCharacter** has five components: **TargetingComponent**, **CombatComponent**, **EquipmentComponent**, **StatsComponent**, and **StateManageComponent**. These will be explained in more detail below.
 
 
 
