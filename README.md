@@ -26,7 +26,7 @@ I implemented the basic combat gameplay for a third person character.
 
 
 ## Character
-- CombatCharacter class is the class for playable character.
+- CombatCharacter is the class for playable character.
 
 
 ![arpg6](https://user-images.githubusercontent.com/96270683/229285673-18cd72fc-40f0-4fd0-bb80-af2790987e77.PNG)
