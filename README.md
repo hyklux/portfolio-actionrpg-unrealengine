@@ -13,7 +13,6 @@ I implemented the basic combat gameplay for a third person character.
 
 
 ![action_rpg_intro1](https://github.com/hyklux/portfolio-actionrpg-unrealengine/assets/96270683/57112d9e-b57c-46c2-8777-f4e111e0c3e8)
-![arpg1](https://user-images.githubusercontent.com/96270683/229277573-60205ff8-0400-4b84-bd82-76ed9fd2e4a8.PNG)
 
 
 ## Implementations
@@ -27,7 +26,7 @@ I implemented the basic combat gameplay for a third person character.
 
 
 ## Character
-- CombatCharacter is the class for playable character.
+- BP_CombatPlayerCharacter is the blueprint class for playable character.
 
 
 ![arpg6](https://user-images.githubusercontent.com/96270683/229285673-18cd72fc-40f0-4fd0-bb80-af2790987e77.PNG)
