@@ -122,86 +122,45 @@ public:
 ### Targeting the enemy
 - TargetComponent handles enemy targeting.
 - When 'TARGET' command is pressed, TargetComponent scans for enemies within the specified TargetingDistance.
-
-
-
-
-## Weapon
-
-
-### BaseWeapon
-- All weapon classes are implemented by inheriting the **BaseWeapon** class.
-
-
-![arpg2](https://user-images.githubusercontent.com/96270683/229282134-d7296db9-df8c-488e-be62-71448fbb9a6c.PNG)
-- BaseWeapon defines animation data according to the weapon's attack type and attack data to be applied during battle.
 ``` c++
-public:
-	UPROPERTY()
-	FName HandSocketName;
-	UPROPERTY()
-	ECombatType CombatType;
-	UPROPERTY()
-	UCombatComponent* CombatComponent;
+void UTargetingComponent::EnableLockOn()
+{
+	AActor* foundTargetActor;
+	bool isFound = FindTarget(foundTargetActor);
 
-	//Animation montage based on attack types
-	UPROPERTY()
-	TArray<UAnimMontage*> LightAttackMontages;
-	UPROPERTY()
-	TArray<UAnimMontage*> HeavyAttackMontages;
-	UPROPERTY()
-	TArray<UAnimMontage*> ChargeAttackMontages;
-	UPROPERTY()
-	TArray<UAnimMontage*> FallingAttackMontages;
-	UPROPERTY()
-	TArray<UAnimMontage*> SprintAttackMontages;
-	UPROPERTY()
-	TArray<UAnimMontage*> DodgeMontages;
-	UPROPERTY()
-	UAnimMontage* EnterCombatMontage;
-	UPROPERTY()
-	UAnimMontage* ExitCombatMontage;
+	if (isFound && CanTargetActor(foundTargetActor))
+	{
+		SetTargetActor(foundTargetActor);
+		SetIsTargeting(true);
+		UpdateRotationMode();
+	}
+}
 
-	//Combat data
-	UPROPERTY()
-	float Damage;
-	UPROPERTY()
-	TMap<FGameplayTag, float> ActionStatCost;
-	UPROPERTY()
-	TMap<FGameplayTag, float> ActionDamageMultiplier;
+bool UTargetingComponent::FindTarget(AActor*& foundTarget)
+{
+	FVector start = GetOwner()->GetActorLocation();
+	FVector end = FollowCamera->GetForwardVector() * TargetingDistance + GetOwner()->GetActorLocation();
+	TArray<AActor*> actorsToIgnore;
+	actorsToIgnore.Push(GetOwner());
+	FHitResult outHit;
+
+	bool isHit = UKismetSystemLibrary::SphereTraceSingleForObjects(GetWorld(), start, end, TargetingRadius, TargetObjectTypes, false, actorsToIgnore, EDrawDebugTrace::ForDuration, outHit, false);
+	if (isHit && outHit.GetActor())
+	{
+		foundTarget = outHit.GetActor();
+		return true;
+	}
+
+	return false;
+}
 ```
 
-
-### BP_ToughSword
-- This is what the actual weapon class BP_ToughSword looks like.
-
-
-![arpg3](https://user-images.githubusercontent.com/96270683/229283520-82812ffa-82f7-475b-a2fc-6da94f31b70d.PNG)
-- Designate animations according to attack types such as LightAttack and HeavyAttack.
+![arpg9](https://user-images.githubusercontent.com/96270683/229327024-e8d47812-08f8-457a-b8f0-9ed42eb54961.PNG)
+- If there is an enemy, it becomes LockOn and the LockOn UI is displayed on the enemy.
+- While LockOn, the player and camera will continue to look at the locked enemy.
 
 
-![arpg4](https://user-images.githubusercontent.com/96270683/229283564-6cfd2535-ee5a-4e45-801f-43823f85aae4.PNG)
-- Set attack data such as Damage and ActionStatCost.
-
-
-![arpg5](https://user-images.githubusercontent.com/96270683/229283590-fae7b03a-241f-4813-9f4e-0b8dacaf30d5.PNG)
-
-## Character
-- You define your playable character in the CombatCharacter class.
-
-
-![arpg6](https://user-images.githubusercontent.com/96270683/229285673-18cd72fc-40f0-4fd0-bb80-af2790987e77.PNG)
-- Weapon Actors are mounted on SkeletonMesh's designated sockets.
-- When a weapon is equipped, the CombatCharacter class becomes the owner of the Weapon class and loads information necessary for combat.
-- The video below is the character's combat motion applied after equipping the weapon.
-
-
-![arpg1_min](https://user-images.githubusercontent.com/96270683/229287431-f8f93287-0787-4d95-9975-3cbcb6a4b0e3.gif)
-
-
-![arpg2_min](https://user-images.githubusercontent.com/96270683/229287735-5707c1a1-cecc-4d7f-ab5d-b1fe8dfdfa3d.gif)
-
-
+![arpg3_min](https://user-images.githubusercontent.com/96270683/229327013-a5b54d28-1c8e-411e-81ae-71a08eac819d.gif)
 
 
 ## Components
@@ -216,7 +175,7 @@ public:
 
 ### TargetingComponent
 - Pressing 'TARGET' command and determine if an enemy is within the specified TargetingDistance.
-
+- 
 
 ![arpg9](https://user-images.githubusercontent.com/96270683/229327024-e8d47812-08f8-457a-b8f0-9ed42eb54961.PNG)
 - If there is an enemy, it becomes LockOn and the LockOn UI is displayed on the enemy.
