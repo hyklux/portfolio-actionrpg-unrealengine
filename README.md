@@ -175,7 +175,7 @@ bool UStateManageComponent::IsCurrentActionEqualToAny(FGameplayTagContainer& act
 ## Combat
 
 
-### Targeting the enemy
+### 1. Targeting the enemy
 - TargetComponent handles enemy targeting.
 - When 'TARGET' command is pressed, TargetComponent scans for enemies within the specified TargetingDistance.
 ``` c++
@@ -219,13 +219,13 @@ bool UTargetingComponent::FindTarget(AActor*& foundTarget)
 ![arpg3_min](https://user-images.githubusercontent.com/96270683/229327013-a5b54d28-1c8e-411e-81ae-71a08eac819d.gif)
 
 
-### Attacking the enemy
+### 2. Attacking the enemy
 
 
 - When attacking animation montage is player, the weapon's Collision is activated to collect information on the actors detected by the collision to process damage. It is implemented by the AnimNofiy function(AN_CollsionTrace) on a montage.
 
   
-![arpg11](https://github.com/hyklux/portfolio-actionrpg-unrealengine/assets/96270683/5c953057-bb16-4e6e-a315-c356b1d652d3)
+![action_rpg_attack1](https://github.com/hyklux/portfolio-actionrpg-unrealengine/assets/96270683/e1171090-8f62-4399-8325-66f8f29091f5)
 - Once the weapon's collision is activated, it creates a trace object from the weapon's 'Weapon Start' socket to 'Weapon End' so it can detect any hits made to the weapon's blade.
   
   
