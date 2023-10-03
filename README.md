@@ -16,13 +16,13 @@ I implemented the basic combat gameplay for a third person character.
 
 
 ## Implementations
-:heavy_check_mark: Character
+:heavy_check_mark: **Character**
 
 
-:heavy_check_mark: Weapon
+:heavy_check_mark: **Weapon**
 
 
-:heavy_check_mark: Combat
+:heavy_check_mark: **Combat**
 
 
 ## Character
