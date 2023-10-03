@@ -29,7 +29,15 @@ I implemented the basic combat gameplay for a third person character.
 - BP_CombatPlayerCharacter is the blueprint class for playable character.
 
 
-![arpg6](https://user-images.githubusercontent.com/96270683/229285673-18cd72fc-40f0-4fd0-bb80-af2790987e77.PNG)
+![action_rpg_cha1](https://github.com/hyklux/portfolio-actionrpg-unrealengine/assets/96270683/34b37d30-24f1-4e79-a943-e354ddb192ba)
+- Character animation logic is implemented on animation blueprint class.
+![action_rpg_cha2](https://github.com/hyklux/portfolio-actionrpg-unrealengine/assets/96270683/300c4c73-5d6b-43f5-b6ba-22fdd0054820)
+- Combat functions of the player character are implemented by individual components.
+- CombatPlayerCharacter has four components, TargetingComponent, CombatComponent, StatsCompnent and StateManageComponent which will be explained in more detail below.
+
+
+
+
 - Weapon Actors are mounted on SkeletonMesh's designated sockets.
 - When a weapon is equipped, the CombatCharacter class becomes the owner of the Weapon class and loads information necessary for combat.
 - The video below is the character's combat motion applied after equipping the weapon.
