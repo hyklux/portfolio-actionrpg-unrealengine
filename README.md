@@ -2,16 +2,17 @@
 Action RPG portfolio using Unreal Engine
 
 
-Youtube Link : https://youtu.be/NV9-pcHnVTc
-
-
 ## Introduction
 This is an Action RPG portfolio made with Unreal Engine.
+
+
+Youtube Link : https://youtu.be/NV9-pcHnVTc
 
 
 I implemented the basic combat gameplay for a third person character.
 
 
+![action_rpg_intro1](https://github.com/hyklux/portfolio-actionrpg-unrealengine/assets/96270683/e8fc5394-8eda-43c6-8bca-9489d20b592a)
 ![arpg1](https://user-images.githubusercontent.com/96270683/229277573-60205ff8-0400-4b84-bd82-76ed9fd2e4a8.PNG)
 
 
