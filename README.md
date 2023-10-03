@@ -47,11 +47,11 @@ I implemented the basic combat gameplay for a third person character.
 
 
 ### BaseWeapon
-- All weapon classes are implemented by inheriting the BaseWeapon class.
+- All weapon classes are implemented by inheriting the **BaseWeapon** class.
 
 
 ![arpg2](https://user-images.githubusercontent.com/96270683/229282134-d7296db9-df8c-488e-be62-71448fbb9a6c.PNG)
-- BaseWeapon defines animation montages to be player when using the weapon and attack values to be applied when attacking the enemies in combat.
+- BaseWeapon defines **animation montages** to be player when using the weapon and** attack values** to be applied when attacking the enemies in combat.
 ``` c++
 public:
 	UPROPERTY()
@@ -94,23 +94,20 @@ public:
 
 
 ![action_rpg_weapon1](https://github.com/hyklux/portfolio-actionrpg-unrealengine/assets/96270683/db37f958-0a48-47df-a4f4-f0206371ef76)
-- Animation montages are designated according to attack types such as LightAttack and HeavyAttack.
+- Animation montages are designated according to attack types such as LightAttack and HeavyAttack and etc.
 
 
-![arpg4](https://user-images.githubusercontent.com/96270683/229283564-6cfd2535-ee5a-4e45-801f-43823f85aae4.PNG)
 ![action_rpg_weapon2](https://github.com/hyklux/portfolio-actionrpg-unrealengine/assets/96270683/69fa41d4-7e26-4d49-8676-3922beb46b30)
 - Attack values(Damage, ActionStatCost, ActionDamageMultiplier) could be set in the weapon blueprint class.
 
 
-![arpg5](https://user-images.githubusercontent.com/96270683/229283590-fae7b03a-241f-4813-9f4e-0b8dacaf30d5.PNG)
 ![action_rpg_weapon3](https://github.com/hyklux/portfolio-actionrpg-unrealengine/assets/96270683/0d7c8623-7491-4627-b78e-f528652fe890)
+- Weapon actors are mounted on SkeletonMesh's designated sockets.
 
 
-
-
-- Weapon Actors are mounted on SkeletonMesh's designated sockets.
-- When a weapon is equipped, the CombatPlayerCharacter class becomes the owner of the weapon class and loads animation montages and attack values necessary for combat.
-- The video below is the character's combat motion applied after equipping the weapon.
+![action_rpg_weapon4](https://github.com/hyklux/portfolio-actionrpg-unrealengine/assets/96270683/034814fc-675d-47a3-9cb8-2b0cd73846f3)
+- When a weapon is equipped, CombatPlayerCharacter class becomes the owner of the weapon class and loads animation montages and attack values necessary for combat.
+- The video shows the animation montages applied to the player character after equipping a weapon.
 
 
 ![arpg1_min](https://user-images.githubusercontent.com/96270683/229287431-f8f93287-0787-4d95-9975-3cbcb6a4b0e3.gif)
@@ -119,13 +116,21 @@ public:
 ![arpg2_min](https://user-images.githubusercontent.com/96270683/229287735-5707c1a1-cecc-4d7f-ab5d-b1fe8dfdfa3d.gif)
 
 
+## Combat
+
+
+### Targeting the enemy
+- TargetComponent handles enemy targeting.
+- When 'TARGET' command is pressed, TargetComponent scans for enemies within the specified TargetingDistance.
+
+
 
 
 ## Weapon
 
 
 ### BaseWeapon
-- All weapon classes are implemented by inheriting the BaseWeapon class.
+- All weapon classes are implemented by inheriting the **BaseWeapon** class.
 
 
 ![arpg2](https://user-images.githubusercontent.com/96270683/229282134-d7296db9-df8c-488e-be62-71448fbb9a6c.PNG)
