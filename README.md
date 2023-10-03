@@ -6,23 +6,41 @@ Youtube Link : https://youtu.be/NV9-pcHnVTc
 
 
 ## Introduction
-This is a action RPG portfolio made by Unreal Engine.
+This is an Action RPG portfolio made with Unreal Engine.
 
 
-I have implemented the basic combat logic for a 3rd person player character.
+I implemented the basic combat gameplay for a third person character.
 
 
 ![arpg1](https://user-images.githubusercontent.com/96270683/229277573-60205ff8-0400-4b84-bd82-76ed9fd2e4a8.PNG)
 
 
 ## Implementations
-:heavy_check_mark: Weapon
-
-
 :heavy_check_mark: Character
 
 
-:heavy_check_mark: Components
+:heavy_check_mark: Weapon
+
+
+:heavy_check_mark: Combat
+
+
+## Character
+- CombatCharacter class is the class for playable character.
+
+
+![arpg6](https://user-images.githubusercontent.com/96270683/229285673-18cd72fc-40f0-4fd0-bb80-af2790987e77.PNG)
+- Weapon Actors are mounted on SkeletonMesh's designated sockets.
+- When a weapon is equipped, the CombatCharacter class becomes the owner of the Weapon class and loads information necessary for combat.
+- The video below is the character's combat motion applied after equipping the weapon.
+
+
+![arpg1_min](https://user-images.githubusercontent.com/96270683/229287431-f8f93287-0787-4d95-9975-3cbcb6a4b0e3.gif)
+
+
+![arpg2_min](https://user-images.githubusercontent.com/96270683/229287735-5707c1a1-cecc-4d7f-ab5d-b1fe8dfdfa3d.gif)
+
+
 
 
 ## Weapon
