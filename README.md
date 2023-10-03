@@ -43,6 +43,66 @@ I implemented the basic combat gameplay for a third person character.
   	- StateManageComponent
 
 
+## Weapon
+
+
+### BaseWeapon
+- All weapon classes are implemented by inheriting the BaseWeapon class.
+
+
+![arpg2](https://user-images.githubusercontent.com/96270683/229282134-d7296db9-df8c-488e-be62-71448fbb9a6c.PNG)
+- BaseWeapon defines animation montages to be player when using the weapon and attack values to be applied when attacking the enemies in combat.
+``` c++
+public:
+	UPROPERTY()
+	FName HandSocketName;
+	UPROPERTY()
+	ECombatType CombatType;
+	UPROPERTY()
+	UCombatComponent* CombatComponent;
+
+	//Animation montage based on attack types
+	UPROPERTY()
+	TArray<UAnimMontage*> LightAttackMontages;
+	UPROPERTY()
+	TArray<UAnimMontage*> HeavyAttackMontages;
+	UPROPERTY()
+	TArray<UAnimMontage*> ChargeAttackMontages;
+	UPROPERTY()
+	TArray<UAnimMontage*> FallingAttackMontages;
+	UPROPERTY()
+	TArray<UAnimMontage*> SprintAttackMontages;
+	UPROPERTY()
+	TArray<UAnimMontage*> DodgeMontages;
+	UPROPERTY()
+	UAnimMontage* EnterCombatMontage;
+	UPROPERTY()
+	UAnimMontage* ExitCombatMontage;
+
+	//Combat data
+	UPROPERTY()
+	float Damage;
+	UPROPERTY()
+	TMap<FGameplayTag, float> ActionStatCost;
+	UPROPERTY()
+	TMap<FGameplayTag, float> ActionDamageMultiplier;
+```
+
+
+### BP_ToughSword
+- This is what the actual weapon class BP_ToughSword looks like.
+
+
+![arpg3](https://user-images.githubusercontent.com/96270683/229283520-82812ffa-82f7-475b-a2fc-6da94f31b70d.PNG)
+- Designate animations according to attack types such as LightAttack and HeavyAttack.
+
+
+![arpg4](https://user-images.githubusercontent.com/96270683/229283564-6cfd2535-ee5a-4e45-801f-43823f85aae4.PNG)
+- Set attack data such as Damage and ActionStatCost.
+
+
+![arpg5](https://user-images.githubusercontent.com/96270683/229283590-fae7b03a-241f-4813-9f4e-0b8dacaf30d5.PNG)
+
 
 
 - Weapon Actors are mounted on SkeletonMesh's designated sockets.
