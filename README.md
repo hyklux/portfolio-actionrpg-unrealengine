@@ -98,15 +98,18 @@ public:
 
 
 ![arpg4](https://user-images.githubusercontent.com/96270683/229283564-6cfd2535-ee5a-4e45-801f-43823f85aae4.PNG)
-- Attack values such as Damage and ActionStatCost could be set in the weapon blueprint class.
+![action_rpg_weapon2](https://github.com/hyklux/portfolio-actionrpg-unrealengine/assets/96270683/69fa41d4-7e26-4d49-8676-3922beb46b30)
+- Attack values(Damage, ActionStatCost, ActionDamageMultiplier) could be set in the weapon blueprint class.
 
 
 ![arpg5](https://user-images.githubusercontent.com/96270683/229283590-fae7b03a-241f-4813-9f4e-0b8dacaf30d5.PNG)
+![action_rpg_weapon3](https://github.com/hyklux/portfolio-actionrpg-unrealengine/assets/96270683/0d7c8623-7491-4627-b78e-f528652fe890)
+
 
 
 
 - Weapon Actors are mounted on SkeletonMesh's designated sockets.
-- When a weapon is equipped, the CombatCharacter class becomes the owner of the Weapon class and loads information necessary for combat.
+- When a weapon is equipped, the CombatPlayerCharacter class becomes the owner of the weapon class and loads animation montages and attack values necessary for combat.
 - The video below is the character's combat motion applied after equipping the weapon.
 
 
