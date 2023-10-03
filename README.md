@@ -107,7 +107,25 @@ public:
 
 ![action_rpg_weapon4](https://github.com/hyklux/portfolio-actionrpg-unrealengine/assets/96270683/034814fc-675d-47a3-9cb8-2b0cd73846f3)
 - When a weapon is equipped, CombatPlayerCharacter class becomes the owner of the weapon class and loads animation montages and attack values necessary for combat.
-- The video shows the animation montages applied to the player character after equipping a weapon.
+- CombatPlayerCharacter's CombatComponent keeps the reference to the equipped weapon and changes the combat state.
+``` c++
+void UCombatComponent::SetMainWeapon(ABaseWeapon* newWeapon)
+{
+	if (IsValid(MainWeapon))
+	{
+		MainWeapon->OnUnequipped();
+		MainWeapon->Destroy();
+	}
+
+	MainWeapon = newWeapon;
+}
+
+void UCombatComponent::SetCombatEnabled(bool enableCombat)
+{
+	bCombatEnabled = enableCombat;
+}
+```
+- The videos show the animation montages applied to the player character after equipping a weapon.
 
 
 ![arpg1_min](https://user-images.githubusercontent.com/96270683/229287431-f8f93287-0787-4d95-9975-3cbcb6a4b0e3.gif)
@@ -116,6 +134,44 @@ public:
 ![arpg2_min](https://user-images.githubusercontent.com/96270683/229287735-5707c1a1-cecc-4d7f-ab5d-b1fe8dfdfa3d.gif)
 
 
+- CombatPlayerCharacter's StateMangeComponent keeps track of the current character state whenever these animation montages are played so that before executing a certain command we can that it is possible to execute the command or not. 
+``` c++
+void UStateManageComponent::SetState(FGameplayTag newState)
+{
+	if (CurrentState != newState)
+	{
+		CurrentState = newState;
+	}
+}
+
+FGameplayTag UStateManageComponent::GetCurrentState() const
+{
+	return CurrentState;
+}
+
+bool UStateManageComponent::IsCurrentStateEqualToAny(FGameplayTagContainer& statesToCheck)
+{
+	return statesToCheck.HasTagExact(CurrentState);
+}
+
+void UStateManageComponent::SetAction(FGameplayTag newAction)
+{
+	if (CurrentAction != newAction)
+	{
+		CurrentAction = newAction;
+	}
+}
+
+FGameplayTag UStateManageComponent::GetCurrentAction() const
+{
+	return CurrentAction;
+}
+
+bool UStateManageComponent::IsCurrentActionEqualToAny(FGameplayTagContainer& actionsToCheck)
+{
+	return actionsToCheck.HasTagExact(CurrentAction);
+}
+```
 ## Combat
 
 
@@ -161,6 +217,9 @@ bool UTargetingComponent::FindTarget(AActor*& foundTarget)
 
 
 ![arpg3_min](https://user-images.githubusercontent.com/96270683/229327013-a5b54d28-1c8e-411e-81ae-71a08eac819d.gif)
+
+
+### Attacking the enemy
 
 
 ## Components
