@@ -225,15 +225,14 @@ bool UTargetingComponent::FindTarget(AActor*& foundTarget)
 - When attacking animation montage is player, the weapon's Collision is activated to collect information on the actors detected by the collision to process damage. It is implemented by the AnimNofiy function(AN_CollsionTrace) on a montage.
 
   
-![arpg4_min](https://user-images.githubusercontent.com/96270683/229327623-ba78ca5d-3431-46ae-a530-d1e0644c7fb8.gif)
-- Once the weapon's collision is activated, it creates a trace object from the weapon's 'Weapon Start' socket to 'Weapon End' so it can detect any hits made to the weapon's blade.
-  
-  
 ![arpg11](https://github.com/hyklux/portfolio-actionrpg-unrealengine/assets/96270683/5c953057-bb16-4e6e-a315-c356b1d652d3)
 - Once the weapon's collision is activated, it creates a trace object from the weapon's 'Weapon Start' socket to 'Weapon End' so it can detect any hits made to the weapon's blade.
-
+  
   
 ![arpg13](https://github.com/hyklux/portfolio-actionrpg-unrealengine/assets/96270683/ba183ffd-af31-49de-898b-c788b18a7332)
+- CollisionComponent::CollisionTrace() scans for enemies to be damaged except the player character itself.
+
+
 ``` c++
 void UCollisionComponent::CollisionTrace()
 {
@@ -263,7 +262,7 @@ void UCollisionComponent::CollisionTrace()
 	}
 }
 ```
-
+![arpg4_min](https://user-images.githubusercontent.com/96270683/229327623-ba78ca5d-3431-46ae-a530-d1e0644c7fb8.gif)
 
 ## Components
 - Detailed functions of characters or weapons are implemented by individual components.
