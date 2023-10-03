@@ -93,12 +93,12 @@ public:
 - This is what the actual weapon class BP_ToughSword looks like.
 
 
-![arpg3](https://user-images.githubusercontent.com/96270683/229283520-82812ffa-82f7-475b-a2fc-6da94f31b70d.PNG)
-- Designate animations according to attack types such as LightAttack and HeavyAttack.
+![action_rpg_weapon1](https://github.com/hyklux/portfolio-actionrpg-unrealengine/assets/96270683/db37f958-0a48-47df-a4f4-f0206371ef76)
+- Animation montages are designated according to attack types such as LightAttack and HeavyAttack.
 
 
 ![arpg4](https://user-images.githubusercontent.com/96270683/229283564-6cfd2535-ee5a-4e45-801f-43823f85aae4.PNG)
-- Set attack data such as Damage and ActionStatCost.
+- Attack values such as Damage and ActionStatCost could be set in the weapon blueprint class.
 
 
 ![arpg5](https://user-images.githubusercontent.com/96270683/229283590-fae7b03a-241f-4813-9f4e-0b8dacaf30d5.PNG)
