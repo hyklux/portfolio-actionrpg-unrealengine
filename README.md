@@ -34,8 +34,13 @@ I implemented the basic combat gameplay for a third person character.
 
   
 ![action_rpg_cha2](https://github.com/hyklux/portfolio-actionrpg-unrealengine/assets/96270683/300c4c73-5d6b-43f5-b6ba-22fdd0054820)
-- Combat functions of the player character are implemented by individual components.
-- **BP_CombatPlayerCharacter** has five components: **TargetingComponent**, **CombatComponent**, **EquipmentComponent**, **StatsComponent**, and **StateManageComponent**. These will be explained in more detail below.
+- Combat functions of the player character are implemented by individual components. 
+- **BP_CombatPlayerCharacter** has five components. These will be explained in more detail below.
+	- TargetingComponent
+ 	- CombatComponent
+  	- EquipmentComponent
+  	- StatsComponent
+  	- StateManageComponent
 
 
 
