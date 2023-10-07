@@ -16,14 +16,14 @@ I implemented the basic combat gameplay for a third person character.
 
 
 ## Implementations
-:heavy_check_mark: **Character**
+- **Character**
 
 
-:heavy_check_mark: **Weapon**
+- **Weapon**
 	- BaseWeapon
 	- BP_ToughSword
 
-:heavy_check_mark: **Combat**
+- **Combat**
 	- Targeting the enemy
  	- Attacking the enemy
 
