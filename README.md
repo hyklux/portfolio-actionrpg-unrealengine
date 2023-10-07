@@ -1,12 +1,12 @@
 # portfolio-actionrpg-unrealengine
-Action RPG portfolio using Unreal Engine
+Action RPG game made with using Unreal Engine
 
 
 ## Introduction
 Youtube Link : https://youtu.be/NV9-pcHnVTc
 
 
-This is an Action RPG portfolio made with Unreal Engine.
+This is an Action RPG game made with Unreal Engine.
 
 
 I implemented the basic combat gameplay for a third person character.
